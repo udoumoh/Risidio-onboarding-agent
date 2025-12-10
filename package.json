@@ -1,0 +1,39 @@
+{
+  "name": "lunim-onboarding-agent",
+  "version": "1.0.0",
+  "description": "Risidio Onboarding Buddy - AI-powered Slack bot for onboarding new team members",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "slack",
+    "bot",
+    "onboarding",
+    "ai",
+    "llm"
+  ],
+  "author": "Your Team",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/bolt": "^4.6.0",
+    "@slack/web-api": "^6.12.0",
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "openai": "^6.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.2",
+    "nodemon": "^3.1.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
+
