@@ -61,65 +61,19 @@ export async function handleOnboardCommand(
               type: 'button',
               text: {
                 type: 'plain_text',
-                text: '📊 Product'
+                text: '👥 HR'
               },
-              action_id: 'onboard_role_product',
-              value: 'product'
+              action_id: 'onboard_role_hr',
+              value: 'hr'
             },
             {
               type: 'button',
               text: {
                 type: 'plain_text',
-                text: '🎨 Design'
-              },
-              action_id: 'onboard_role_design',
-              value: 'design'
-            }
-          ]
-        },
-        {
-          type: 'actions',
-          elements: [
-            {
-              type: 'button',
-              text: {
-                type: 'plain_text',
-                text: '📢 Marketing'
+                text: '📢 Marketing Intern'
               },
               action_id: 'onboard_role_marketing',
               value: 'marketing'
-            },
-            {
-              type: 'button',
-              text: {
-                type: 'plain_text',
-                text: '📈 Data'
-              },
-              action_id: 'onboard_role_data',
-              value: 'data'
-            },
-            {
-              type: 'button',
-              text: {
-                type: 'plain_text',
-                text: '⚙️ Operations'
-              },
-              action_id: 'onboard_role_operations',
-              value: 'operations'
-            }
-          ]
-        },
-        {
-          type: 'actions',
-          elements: [
-            {
-              type: 'button',
-              text: {
-                type: 'plain_text',
-                text: 'Other'
-              },
-              action_id: 'onboard_role_other',
-              value: 'other'
             }
           ]
         }
@@ -149,12 +103,8 @@ export async function handleRoleSelection(
     // Map action values to UserRole enum
     const roleMap: Record<string, UserRole> = {
       developer: UserRole.ENGINEER,
-      product: UserRole.PRODUCT,
-      design: UserRole.DESIGN,
-      marketing: UserRole.OTHER, // Map to OTHER if not defined
-      data: UserRole.OTHER, // Map to OTHER if not defined
-      operations: UserRole.OTHER, // Map to OTHER if not defined
-      other: UserRole.OTHER
+      hr: UserRole.OTHER,
+      marketing: UserRole.OTHER
     };
 
     const role = roleMap[actionValue] || UserRole.OTHER;

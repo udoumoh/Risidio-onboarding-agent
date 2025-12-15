@@ -37,9 +37,9 @@ export async function handleAgentMessage(
     ];
 
     // Step 3: Call LLM with tool definitions
-    const llmClient = getLLMClient();
+    const llmClient = getLLMClient('openai');
     const firstResponse = await llmClient.callLLM(messages, {
-      model: 'claude-3-5-sonnet-20241022',
+      model: 'gpt-4o-mini',
       temperature: 0.7,
       maxTokens: 1024,
       tools: toolDefinitions
@@ -99,7 +99,7 @@ export async function handleAgentMessage(
       ];
 
       const finalResponse = await llmClient.callLLM(messagesWithResults, {
-        model: 'claude-3-5-sonnet-20241022',
+        model: 'gpt-4o-mini',
         temperature: 0.7,
         maxTokens: 1024
       });

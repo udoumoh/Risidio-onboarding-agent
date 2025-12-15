@@ -14,7 +14,7 @@ import { getNextSteps } from '../../agent/tools';
  * Checks user state and displays progress + next tasks
  */
 export async function handleNextStepCommand(
-  { command, ack, say, client }: SlackCommandMiddlewareArgs & { client: WebClient }
+  { command, ack, respond, client }: SlackCommandMiddlewareArgs & { client: WebClient }
 ): Promise<void> {
   try {
     // Acknowledge the command request
@@ -25,7 +25,7 @@ export async function handleNextStepCommand(
 
     // Check if user has completed onboarding setup
     if (!userState || userState.role === UserRole.UNASSIGNED) {
-      await say({
+      await respond({
         text: 'Please complete the onboarding setup first',
         blocks: [
           {
@@ -34,20 +34,6 @@ export async function handleNextStepCommand(
               type: 'mrkdwn',
               text: '📋 *Let\'s get you started!*\n\nI notice you haven\'t set up your onboarding profile yet. Please run the `/onboard` command first to select your role and get your personalized checklist.'
             }
-          },
-          {
-            type: 'actions',
-            elements: [
-              {
-                type: 'button',
-                text: {
-                  type: 'plain_text',
-                  text: 'Run /onboard'
-                },
-                action_id: 'action_run_onboard',
-                value: 'run_onboard'
-              }
-            ]
           }
         ]
       });
@@ -58,7 +44,7 @@ export async function handleNextStepCommand(
     const nextStepsMessage = getNextSteps(userId);
 
     // Format and send the progress update
-    await say({
+    await respond({
       text: 'Here\'s your onboarding progress and next steps',
       blocks: [
         {
@@ -79,25 +65,11 @@ export async function handleNextStepCommand(
           }
         },
         {
-          type: 'actions',
+          type: 'context',
           elements: [
             {
-              type: 'button',
-              text: {
-                type: 'plain_text',
-                text: '❓ Ask a Question'
-              },
-              action_id: 'action_ask_question',
-              value: 'ask_question'
-            },
-            {
-              type: 'button',
-              text: {
-                type: 'plain_text',
-                text: '🔄 Refresh Progress'
-              },
-              action_id: 'action_refresh_progress',
-              value: 'refresh_progress'
+              type: 'mrkdwn',
+              text: '💡 _Tip: Ask me questions by DMing me or @mentioning me in any channel_'
             }
           ]
         }
@@ -108,7 +80,7 @@ export async function handleNextStepCommand(
     console.error('Error in handleNextStepCommand:', errorMessage);
 
     try {
-      await say({
+      await respond({
         text: '⚠️ I encountered an error while retrieving your progress. Please try again later.',
         blocks: [
           {

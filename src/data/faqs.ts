@@ -351,6 +351,72 @@ Your manager will guide you on the timeline - it's not a race!`,
     category: "firstweek",
     keywords: ["code", "contribution", "pr", "coding", "tasks"]
   },
+  {
+    id: "firstweek-capstone",
+    question: "What is the Capstone Project?",
+    answer: `The Capstone Project is your first real contribution to Lunim - a 48-hour challenge that transforms you from learner to builder.
+
+**What It Is:**
+• Your chance to apply everything from your first days (tools, mindset, team)
+• Designed to be ambitious but achievable, stretching but not overwhelming
+• A real, usable deliverable that demonstrates your capability and thinking
+
+**The Objective:**
+• Apply what you know in a real-world slice of work
+• Deliver something usable within 48 hours
+• Show your thinking, execution, and communication
+• Create impact - remove friction, unlock capability, or open a new path
+
+**How You Can Work:**
+• Solo: own a narrow slice end-to-end
+• Pairs or small groups: Marketing + Dev collaboration encouraged
+• Self-organize: form teams as you prefer
+• Work in short, AI-assisted cycles: define, build, test, and refine
+
+**What Counts as a Capstone:**
+It's not an essay or a pitch - it's something you can demo, use, and build on.
+
+Marketing examples:
+• Design a lightweight campaign using AI
+• Build a prompt pack for AI-assisted content creation
+• Prototype a landing page in Notion, Trello, or Canva
+
+Dev examples:
+• Prototype a simple AI-first tool or automation
+• Create a small script/dashboard that saves time
+• Build a quick integration to improve workflow
+
+Mixed examples:
+• Marketing defines need; Dev prototypes the tool
+• Dev builds automation; Marketing frames the use case
+
+**Timeline:**
+• Friday, 21 Nov: Brainstorm and outline your idea
+• Monday, 24 Nov: Finalize and confirm your idea
+• Mon-Tue, 24-25 Nov: 48-hour build window (10-12 hours total work)
+• Wednesday, 26 Nov: Present at Weekly Forum (11:00-13:00) - Day 5 of onboarding
+
+**Deliverables (by Wed, 26 Nov):**
+• 3-5 minute demo of your prototype
+• 1-minute verbal summary (problem, approach, outcome)
+• Evidence package: screenshots, Loom, notes, or metrics
+• Short note on next steps if given another 48 hours
+
+**Review Criteria:**
+• Value: Does it unlock capability or reduce friction?
+• Quality: Is it clean, usable, and well-built?
+• Flow: Could it slot into our real workflow?
+• Clarity: Is the problem, approach, and outcome explained crisply?
+
+**Support:**
+• Ask early if blocked - don't wait
+• Use the sprint channel; tag leads when needed
+• Feedback is part of the process
+
+Remember: The Capstone is small but sharp, humble but impactful, and above all shippable. It's not about perfection - it's about how you think, act, and adapt while building.`,
+    category: "firstweek",
+    keywords: ["capstone", "project", "challenge", "48 hours", "demo", "prototype", "build", "deliverable", "presentation"]
+  },
 
   // Benefits & Perks
   {
