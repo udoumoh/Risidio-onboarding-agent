@@ -5,7 +5,15 @@
       "Bash(npx tsc:*)",
       "Bash(npm run build:*)",
       "Bash(dir:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(python:*)",
+      "Bash(node -p:*)",
+      "Bash(node test-search.js:*)",
+      "Bash(node -e:*)",
+      "Bash(node update-epic-doc.js:*)",
+      "Bash(npm run ingest:*)",
+      "Bash(node test-epic-search.js:*)",
+      "Bash(node add-meeting-times.js:*)"
     ],
     "deny": [],
     "ask": []

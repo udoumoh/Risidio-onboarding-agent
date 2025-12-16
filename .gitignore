@@ -36,3 +36,7 @@ coverage/
 # Temporary files
 *.tmp
 .cache/
+
+# RAG System / Vector Store
+data/
+knowledge-base.json

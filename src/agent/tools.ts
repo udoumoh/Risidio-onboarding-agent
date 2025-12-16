@@ -18,6 +18,7 @@ import {
 import { userStateManager, UserRole } from '../state/userState';
 import type { Role } from '../data/checklists';
 import type { ToolDefinition } from '../utils/llmClient';
+import { getVectorStore } from '../utils/vectorStore';
 
 /**
  * Get Risidio's mission, values, and culture information
@@ -99,6 +100,39 @@ export function getNextSteps(userId: string): string {
 }
 
 /**
+ * Search the knowledge base using semantic search
+ * Finds relevant information from Notion docs, Slack history, and other ingested content
+ */
+export async function searchKnowledgeBase(query: string): Promise<string> {
+  try {
+    const vectorStore = getVectorStore();
+    const results = await vectorStore.search(query, 5, 0.5);
+
+    if (results.length === 0) {
+      return 'No relevant information found in the knowledge base. The knowledge base might be empty or your query might not match any documents.';
+    }
+
+    // Format results for Slack (using single asterisks for bold)
+    let response = 'Here\'s what I found in the knowledge base:\n\n';
+
+    results.forEach((result, index) => {
+      const source = result.chunk.metadata.source;
+      const title = result.chunk.metadata.title || source;
+      const similarity = Math.round(result.similarity * 100);
+
+      response += `*Source ${index + 1}: ${title}* (${similarity}% match)\n`;
+      response += `${result.chunk.content}\n\n`;
+    });
+
+    return response;
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error('Error in searchKnowledgeBase:', errorMessage);
+    return `I encountered an error searching the knowledge base: ${errorMessage}`;
+  }
+}
+
+/**
  * Tool definitions for LLM function calling
  * These define what tools the LLM can call and how to call them
  */
@@ -168,6 +202,21 @@ export const toolDefinitions: ToolDefinition[] = [
       },
       required: ['userId']
     }
+  },
+  {
+    name: 'searchKnowledgeBase',
+    description:
+      'Search the semantic knowledge base for information from Notion documents, Slack channel history, and other company documentation. Use this when the user asks about topics that might be in custom company docs, detailed product information, or specific processes not covered by the standard FAQs. This provides more detailed, context-specific information than the general FAQs.',
+    input_schema: {
+      type: 'object',
+      properties: {
+        query: {
+          type: 'string',
+          description: 'The question or topic to search for in the knowledge base (e.g., "product roadmap", "engineering best practices", "how to deploy", "company OKRs")'
+        }
+      },
+      required: ['query']
+    }
   }
 ];
 
@@ -194,6 +243,9 @@ export async function executeTool(
 
     case 'getNextSteps':
       return getNextSteps(String(input.userId || ''));
+
+    case 'searchKnowledgeBase':
+      return await searchKnowledgeBase(String(input.query || ''));
 
     default:
       throw new Error(`Unknown tool: ${toolName}`);

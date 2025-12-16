@@ -11,7 +11,8 @@
     "dev": "nodemon --exec ts-node src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "ingest": "ts-node src/scripts/ingestDocuments.ts"
   },
   "keywords": [
     "slack",
