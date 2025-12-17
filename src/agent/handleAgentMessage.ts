@@ -8,6 +8,7 @@ import type { Message, LLMResponse } from '../utils/llmClient';
 import { toolDefinitions, executeTool } from './tools';
 import { getSystemPrompt } from './systemPrompt';
 import { userStateManager } from '../state/userState';
+import { conversationHistoryManager } from '../state/conversationHistory';
 
 /**
  * Main handler for agent messages
@@ -21,7 +22,10 @@ export async function handleAgentMessage(
     // Step 1: Ensure user is initialized in state
     userStateManager.initializeUser(userId);
 
-    // Step 2: Build the conversation messages
+    // Step 2: Get conversation history
+    const conversationHistory = conversationHistoryManager.getHistory(userId);
+
+    // Step 3: Build the conversation messages
     const systemPrompt = getSystemPrompt();
     const userMessage: Message = {
       role: 'user',
@@ -33,8 +37,12 @@ export async function handleAgentMessage(
         role: 'system',
         content: systemPrompt
       },
+      ...conversationHistory, // Include conversation history
       userMessage
     ];
+
+    // Add user message to history
+    conversationHistoryManager.addMessage(userId, userMessage);
 
     // Step 3: Call LLM with tool definitions
     const llmClient = getLLMClient('openai');
@@ -104,14 +112,27 @@ export async function handleAgentMessage(
         maxTokens: 1024
       });
 
-      return finalResponse.content || 'I apologize, but I encountered an issue processing your request.';
+      const finalContent = finalResponse.content || 'I apologize, but I encountered an issue processing your request.';
+
+      // Add assistant's response to history
+      conversationHistoryManager.addMessage(userId, {
+        role: 'assistant',
+        content: finalContent
+      });
+
+      return finalContent;
     }
 
     // Step 7: Return response if no tools were called
-    return (
-      firstResponse.content ||
-      'I apologize, but I encountered an issue processing your request.'
-    );
+    const content = firstResponse.content || 'I apologize, but I encountered an issue processing your request.';
+
+    // Add assistant's response to history
+    conversationHistoryManager.addMessage(userId, {
+      role: 'assistant',
+      content
+    });
+
+    return content;
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : String(error);

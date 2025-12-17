@@ -40,3 +40,8 @@ coverage/
 # RAG System / Vector Store
 data/
 knowledge-base.json
+RAG-SETUP-COMPLETE.md
+RAG-SETUP-GUIDE.md
+
+# Claude Code
+.claude/

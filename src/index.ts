@@ -52,14 +52,12 @@ app.action(/^onboard_role_/, async (args) => {
     await handleRoleSelection(args as any);
   } catch (error) {
     console.error("Error in role selection:", error);
-    await args.ack();
+    const errorMessage = error instanceof Error ? error.message : '';
+    // Only ack if not already acknowledged
+    if (!errorMessage.includes('already been acknowledged')) {
+      await args.ack();
+    }
   }
-});
-
-// Catch-all for any other unhandled actions (buttons that were removed)
-app.action(/.+/, async ({ ack }) => {
-  await ack();
-  console.log("Acknowledged unhandled action");
 });
 
 // ===== EVENTS =====
