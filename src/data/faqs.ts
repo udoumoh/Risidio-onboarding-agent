@@ -391,12 +391,12 @@ Mixed examples:
 • Dev builds automation; Marketing frames the use case
 
 **Timeline:**
-• Friday, 21 Nov: Brainstorm and outline your idea
-• Monday, 24 Nov: Finalize and confirm your idea
-• Mon-Tue, 24-25 Nov: 48-hour build window (10-12 hours total work)
-• Wednesday, 26 Nov: Present at Weekly Forum (11:00-13:00) - Day 5 of onboarding
+• Day 1: Brainstorm and outline your idea
+• Day 4: Finalize and confirm your idea
+• Days 4-5: 48-hour build window (10-12 hours total work)
+• Day 5: Present at Weekly Forum - check with your cohort lead for exact date and time
 
-**Deliverables (by Wed, 26 Nov):**
+**Deliverables (by presentation day):**
 • 3-5 minute demo of your prototype
 • 1-minute verbal summary (problem, approach, outcome)
 • Evidence package: screenshots, Loom, notes, or metrics
@@ -418,60 +418,65 @@ Remember: The Capstone is small but sharp, humble but impactful, and above all s
     keywords: ["capstone", "project", "challenge", "48 hours", "demo", "prototype", "build", "deliverable", "presentation"]
   },
 
-  // Benefits & Perks
+  // Internship Program
   {
-    id: "benefits-health",
-    question: "What health and wellness benefits does Risidio offer?",
-    answer: `Risidio provides:
-• Health insurance (medical, dental, vision)
-• Mental health support (therapy/counseling coverage)
-• Wellness stipend (gym, meditation apps, etc.)
-• Flexible work hours
-• Work-from-home support
-For specific plan details and enrollment, HR will provide information during onboarding.`,
+    id: "internship-compensation",
+    question: "Is this internship paid?",
+    answer: `This is an unpaid internship focused on real-world learning and experience. You'll gain:
+• Hands-on experience with AI-first development and Web3 technologies
+• Portfolio-ready projects you built and shipped
+• Real Agile workflow experience and cross-functional collaboration
+• Mentorship from experienced developers and team leads
+• Experience presenting at company-wide forums
+• Skills that directly translate to job opportunities
+
+For questions about the internship structure or duration, reach out to Peter or your HR contact.`,
     category: "benefits",
-    keywords: ["health", "insurance", "wellness", "benefits", "medical"]
+    keywords: ["pay", "paid", "unpaid", "salary", "compensation", "money", "stipend"]
   },
   {
-    id: "benefits-professional-dev",
-    question: "Does Risidio support professional development?",
-    answer: `Yes! We invest in your growth:
-• Learning stipend for courses, conferences, books ($1500-3000/year depending on role)
-• Conference attendance and travel support
-• Internal mentorship and career coaching
-• Time for personal projects and learning
-• Skill-sharing sessions and internal talks
-Talk to your manager about development goals - we want you to grow!`,
+    id: "internship-experience",
+    question: "What will I learn during the internship?",
+    answer: `You'll gain practical experience in:
+• AI-first development workflows (using ChatGPT, Claude, and other tools)
+• Web3 and blockchain technologies
+• Agile methodologies (Sprints, standups, retrospectives)
+• Real project delivery from concept to demo
+• Cross-functional collaboration with Dev, HR, and other teams
+• Presenting work to stakeholders
+• Tools: Slack, Trello, Notion, GitHub, and modern dev stacks
+
+This internship is designed to give you real-world skills that employers value.`,
     category: "benefits",
-    keywords: ["learning", "development", "training", "education", "growth"]
+    keywords: ["learning", "development", "training", "education", "growth", "skills", "experience"]
   },
   {
-    id: "benefits-equity",
-    question: "Does Risidio offer equity/stock options?",
-    answer: `Yes, eligible employees receive equity packages:
-• Stock options or RSUs depending on your level and role
-• Specific details will be in your offer letter
-• Vesting schedule details are provided during onboarding
-• Ask HR or your manager if you have questions about your grant
-This is a way to align our success with yours!`,
+    id: "internship-value",
+    question: "What's the value of this internship?",
+    answer: `The internship provides career-building value:
+• Real projects that go into production (not just tutorials)
+• Portfolio pieces you can showcase to employers
+• Reference from team leads who've seen your work
+• Understanding of startup operations and fast-paced delivery
+• Network within the AI and Web3 space
+• Experience with cutting-edge technologies
+
+Many companies value practical experience over just academic qualifications - this gives you both.`,
     category: "benefits",
-    keywords: ["equity", "stock", "options", "ownership", "rsu"]
+    keywords: ["value", "worth", "benefits", "perks", "what do i get"]
   },
   {
-    id: "benefits-perks",
-    question: "What other perks does Risidio offer?",
-    answer: `Additional perks include:
-• Flexible work hours and remote-first culture
-• Home office setup allowance
-• Lunch and snacks budget (for office days)
-• Team retreats and in-person meetups (1-2x per year)
-• Birthday recognition and team celebrations
-• Community giveback opportunities
-• Parental leave and family support
-• Pet-friendly culture (bring your dog to office!)
-Check with HR for the full benefits package!`,
+    id: "internship-duration",
+    question: "How long is the internship?",
+    answer: `The internship starts with Sprint Zero (10 days), then continues into regular sprint work. For specific details about:
+• Total internship duration
+• Time commitment expectations
+• Schedule and availability requirements
+• What happens after Sprint Zero
+
+Please check with Peter or your HR contact - they'll provide all the details specific to your cohort.`,
     category: "benefits",
-    keywords: ["perks", "benefits", "office", "allowance", "celebration"]
+    keywords: ["duration", "length", "how long", "time", "commitment", "weeks", "months"]
   },
 
   // General Onboarding
@@ -587,12 +592,12 @@ export function getFAQAnswer(query: string): string {
   return `I couldn't find a matching FAQ for "${query}". Try asking about:
 • Company mission and values
 • Lunim product features
-• Leave and time off policies
-• Expense reimbursement
+• Sprint Zero and onboarding process
+• Capstone project guidance
 • Slack channels
 • Tools and access
 • First week guidance
-• Benefits and perks
+• Internship program and learning opportunities
 Or ask your manager or in #ask-anything!`;
 }
 

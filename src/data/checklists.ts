@@ -34,7 +34,7 @@ export const CHECKLISTS: Record<Role, ChecklistItem[]> = {
       id: "meet_HR_Point_of_Contact",
       title: "Meet your HR point of contact and onboarding buddy",
       description:
-        "Your HR contact can help with any questions about benefits, policies, or paperwork. Your onboarding buddy is a go-to for day-to-day questions about processes and culture.",
+        "Your HR contact can help with any questions about the internship program, policies, or onboarding requirements. Your onboarding buddy is a go-to for day-to-day questions about processes and culture.",
       category: "people",
     },
     {
@@ -86,7 +86,7 @@ export const CHECKLISTS: Record<Role, ChecklistItem[]> = {
       id: "meet_HR_Point_of_Contact",
       title: "Meet your HR point of contact and onboarding buddy",
       description:
-        "Your HR contact can help with any questions about benefits, policies, or paperwork. Your onboarding buddy is a go-to for day-to-day questions about processes and culture.",
+        "Your HR contact can help with any questions about the internship program, policies, or onboarding requirements. Your onboarding buddy is a go-to for day-to-day questions about processes and culture.",
       category: "people",
     },
     {
@@ -138,7 +138,7 @@ export const CHECKLISTS: Record<Role, ChecklistItem[]> = {
       id: "meet_HR_Point_of_Contact",
       title: "Meet your HR point of contact and onboarding buddy",
       description:
-        "Your HR contact can help with any questions about benefits, policies, or paperwork. Your onboarding buddy is a go-to for day-to-day questions about processes and culture.",
+        "Your HR contact can help with any questions about the internship program, policies, or onboarding requirements. Your onboarding buddy is a go-to for day-to-day questions about processes and culture.",
       category: "people",
     },
     {

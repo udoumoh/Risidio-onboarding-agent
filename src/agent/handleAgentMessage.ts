@@ -113,26 +113,28 @@ export async function handleAgentMessage(
       });
 
       const finalContent = finalResponse.content || 'I apologize, but I encountered an issue processing your request.';
+      const formattedContent = formatSlackMessage(finalContent);
 
       // Add assistant's response to history
       conversationHistoryManager.addMessage(userId, {
         role: 'assistant',
-        content: finalContent
+        content: formattedContent
       });
 
-      return finalContent;
+      return formattedContent;
     }
 
     // Step 7: Return response if no tools were called
     const content = firstResponse.content || 'I apologize, but I encountered an issue processing your request.';
+    const formattedContent = formatSlackMessage(content);
 
     // Add assistant's response to history
     conversationHistoryManager.addMessage(userId, {
       role: 'assistant',
-      content
+      content: formattedContent
     });
 
-    return content;
+    return formattedContent;
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : String(error);
@@ -164,12 +166,21 @@ function formatToolCallsAsText(toolCalls: Array<{
 
 /**
  * Format a message for display in Slack
- * Useful for cleaning up formatting and ensuring proper markdown
+ * Converts Markdown formatting to Slack formatting
  */
 export function formatSlackMessage(message: string): string {
-  // Ensure proper formatting for Slack
-  return message
+  // Convert Markdown bold (**text**) to Slack bold (*text*)
+  // This regex matches **text** but not single * used for Slack formatting
+  let formatted = message.replace(/\*\*([^*]+?)\*\*/g, '*$1*');
+
+  // Convert Markdown italic (__text__) to Slack italic (_text_)
+  formatted = formatted.replace(/__([^_]+?)__/g, '_$1_');
+
+  // Clean up line endings
+  formatted = formatted
     .split('\n')
     .map(line => line.trimEnd())
     .join('\n');
+
+  return formatted;
 }
